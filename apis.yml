@@ -1,17 +1,38 @@
 aid: techsee
 name: TechSee
-description: 'TechSee is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'TechSee is an Israeli-founded customer-experience software company that
+  builds visual assistance and visual agentic AI for customer service, contact centers
+  and field service. Its platform — TechSee Live for agent-guided visual sessions and
+  Sophie AI for autonomous multimodal virtual agents — combines live video, computer
+  vision, augmented reality overlays and screen sharing so that a support agent or an
+  AI agent can see what a customer sees and guide them to a resolution. TechSee sells
+  into telecommunications, insurance, utilities, consumer electronics, home builders,
+  medical devices, retail and BPO, and markets an "open integration platform" of APIs
+  plus prebuilt connectors for Salesforce, ServiceNow, Zendesk, Amazon Connect, Oracle,
+  Pega, Microsoft Dynamics 365, Amdocs and CSG. Public developer artifacts are limited
+  to an iOS mobile SDK on GitHub; the API reference itself is not published publicly.'
 url: https://raw.githubusercontent.com/api-evangelist/techsee/refs/heads/main/apis.yml
+image: https://techsee.com/wp-content/uploads/2024/08/logos-03.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profile
+x-tier-reason: enrichment-pass
 specificationVersion: '0.20'
 created: '2026-08-29'
 modified: '2026-08-29'
 tags:
 - Company
+- Visual Assistance
+- Customer Experience
+- Customer Service
+- Contact Center
+- Computer Vision
+- Augmented Reality
+- Artificial Intelligence
+- Field Service
+- Remote Support
+- Video
+- Telecommunications
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +40,50 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/techsee-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/techsee-stock
+  url: https://techsee.com/
+- type: About
+  url: https://techsee.com/about-us/
+- type: Integrations
+  url: https://techsee.com/integrations/
+- type: Blog
+  url: https://techsee.com/blog/
+- type: Pricing
+  url: https://techsee.com/pricing/
+- type: TermsOfService
+  url: https://techsee.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://techsee.com/privacy-policy/
+- type: Support
+  url: https://techsee.atlassian.net/servicedesk/customer/portal/5
+- type: GitHubOrganization
+  url: https://github.com/TechSeeDev
+- type: Login
+  url: https://app.techsee.me/
+- type: Packages
+  url: packages/techsee-packages.yml
+- type: SDKs
+  url: packages/techsee-packages.yml
+- type: LLMsTxt
+  url: llms/techsee-llms.txt
+- type: Plans
+  url: plans/techsee-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/techsee-rate-limits.yml
+- type: MCPServer
+  url: mcp/techsee-mcp.yml
+- type: WellKnown
+  url: well-known/techsee-well-known.yml
+- type: Authentication
+  url: authentication/techsee-authentication.yml
+- type: OAuthScopes
+  url: scopes/techsee-scopes.yml
+- type: Conformance
+  url: conformance/techsee-conformance.yml
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1

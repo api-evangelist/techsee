@@ -1,0 +1,104 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Direct unauthenticated GET of each /.well-known/ path on every TechSee-controlled
+  host found during contract discovery, 2026-08-29.
+name: TechSee
+slug: techsee
+summary: >-
+  Two real documents are served, both on the marketing host techsee.com: RFC 8414
+  OAuth 2.0 Authorization Server Metadata and RFC 9728 OAuth 2.0 Protected Resource
+  Metadata. Together they advertise a live, OAuth-protected Model Context Protocol
+  server at https://techsee.com/wp-json/mcp/mcp-oauth-server (scope `mcp`, PKCE
+  S256). Nothing else is served: api.techsee.me 404s every path, and app.techsee.me
+  is a single-page app whose catch-all answers 200 with the same 1,003-byte HTML
+  shell for every /.well-known/* path — those 200s are recorded below as misses,
+  not as documents.
+
+hosts:
+- host: techsee.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: techsee-oauth-authorization-server.json
+    note: >-
+      Served after one 301 to the trailing-slash form. Real RFC 8414 metadata:
+      issuer https://techsee.com, authorization_endpoint /oauth/authorize,
+      token_endpoint /oauth/token, revocation_endpoint /oauth/revoke,
+      grant_types authorization_code + refresh_token, PKCE S256 required,
+      scopes_supported ["mcp"], token_endpoint_auth_methods ["none"] (public
+      clients), client_id_metadata_document_supported true.
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    file: techsee-oauth-protected-resource.json
+    note: >-
+      Real RFC 9728 metadata naming the protected resource
+      https://techsee.com/wp-json/mcp/mcp-oauth-server, authorization server
+      https://techsee.com, bearer token in the Authorization header, scope `mcp`.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: api.techsee.me
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: app.techsee.me
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: >-
+      NOT a document. app.techsee.me is a single-page app; its catch-all returns the
+      same 1,003-byte text/html shell for every /.well-known/* path, so this 200 is
+      a false positive and is recorded as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Miss.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: >-
+      SPA catch-all HTML shell, not an AgentCard. Rejected — no a2a/ artifact was
+      written for this provider.
+  - path: /.well-known/agent.json
+    status: 200
+    note: SPA catch-all HTML shell, not an AgentCard. Rejected.
+  - path: /llms.txt
+    status: 404
+
+security_txt: false
+api_catalog: false
+agent_card: false

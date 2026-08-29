@@ -1,0 +1,28 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  techsee.com (pricing, integrations, technology), the deactivated developer portal
+  at techsee.readme.io, and the techsee.stoplight.io workspace — searched 2026-08-29
+name: TechSee
+slug: techsee
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+retry_after: false
+note: >-
+  No rate limits are documented anywhere publicly reachable. TechSee publishes no API
+  reference (see x-coverage), so there is no page that could state a quota, a window,
+  a burst allowance, or the headers the API returns. Nothing could be observed at
+  runtime either: the one live callable surface, the MCP endpoint at
+  https://techsee.com/wp-json/mcp/mcp-oauth-server, rejects unauthenticated calls
+  with 401 before any RateLimit-* or X-RateLimit-* header is emitted, and POSTs to it
+  are intercepted by a Cloudflare WAF at 403. limit_count: 0 is an honest zero, not
+  an unchecked field.
+evidence:
+- url: https://techsee.com/wp-json/mcp/mcp-oauth-server
+  status: 401
+- url: https://techsee.readme.io/
+  status: 401
+- url: https://techsee.stoplight.io/
+  status: 200

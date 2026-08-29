@@ -64,5 +64,10 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-TechSee is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/techsee-stock
+TechSee builds visual assistance and visual agentic AI for customer service, contact centers and field service. Its platform — TechSee Live for agent-guided visual sessions and Sophie AI for autonomous multimodal virtual agents — combines live video, computer vision, augmented reality overlays and screen sharing so that a human or AI agent can see what a customer sees and guide them to a resolution. TechSee sells into telecommunications, insurance, utilities, consumer electronics, home builders, medical devices, retail and BPO, and markets an "open integration platform" of APIs plus prebuilt connectors for Salesforce, ServiceNow, Zendesk, Amazon Connect, Oracle, Pega, Microsoft Dynamics 365, Amdocs and CSG.
+
+TechSee publishes no public API reference or machine-readable contract — the former developer portal at https://techsee.readme.io/ returns HTTP 401 and the Stoplight workspace at https://techsee.stoplight.io/ has zero public projects. What this profile did find, by probe: a live OAuth-protected Model Context Protocol endpoint on techsee.com (advertised by RFC 8414 and RFC 9728 metadata), and the TechSee Live iOS SDK on GitHub.
+
+- https://techsee.com/
+- https://github.com/TechSeeDev
+

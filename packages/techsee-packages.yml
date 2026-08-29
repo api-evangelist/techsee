@@ -1,0 +1,162 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://registry.npmjs.org/-/v1/search?text=techsee ,
+  https://github.com/TechSeeDev , and
+  https://raw.githubusercontent.com/TechSeeDev/TechSee-Live-Framework/main/Package.swift
+name: TechSee
+slug: techsee
+summary: >-
+  TechSee publishes one developer-facing client SDK — the TechSee Live iOS
+  framework, distributed as a Swift Package whose binary targets are pinned
+  xcframework zips on TechSee's own CDN (sdk-us.techsee.me). Everything else
+  TechSee has published to npm under the @techsee scope is internal service
+  plumbing for its own microservices, published publicly but not documented as a
+  developer SDK; those entries are recorded here as official packages and
+  explicitly marked sdk: false so they are not miscounted as client libraries.
+  No PyPI, RubyGems, Packagist, crates.io, NuGet or Maven Central package was
+  found for this provider.
+registries_searched:
+- registry: npm
+  url: https://registry.npmjs.org/-/v1/search?text=techsee
+  result: 6 packages under the @techsee scope
+- registry: pypi
+  url: https://pypi.org/pypi/techsee/json
+  result: 404 — no package
+- registry: swift-package-manager
+  url: https://github.com/TechSeeDev/TechSee-Live-Framework
+  result: TechSeeLiveFramework, tags 1.0.0 / 5.4.4 / 5.4.5
+- registry: cdn
+  url: https://sdk-us.techsee.me/ios/build/
+  result: xcframework zips referenced by Package.swift; bucket listing 403, pinned objects 200
+
+packages:
+- name: TechSeeLiveFramework
+  registry: swift-package-manager
+  url: https://github.com/TechSeeDev/TechSee-Live-Framework
+  language: swift
+  platform: ios
+  official: true
+  sdk: true
+  version: 5.4.5
+  published: '2024-09-24'
+  install: '.package(url: "https://github.com/TechSeeDev/TechSee-Live-Framework.git", from: "5.4.5")'
+  note: >-
+    The TechSee Live iOS SDK — embeds the TechSee Visual Assistance session
+    (screen/application mirroring, video and photo modes, image upload, text chat,
+    pause/resume, 24 UI languages, iOS 13+) inside a customer's own app. `version`
+    and `published` are the newest git tag on the repository and its commit date;
+    SPM packages have no registry metadata endpoint, so the tag IS the release
+    record. Note the drift: the newest tag is 5.4.5 but Package.swift on `main`
+    still pins the 5.4.4 binary (see the cdn entry below).
+- name: TechSeeLiveFramework.xcframework
+  registry: cdn
+  url: https://sdk-us.techsee.me/ios/build/TechSeeLiveFramework_5.4.4.xcframework.zip
+  language: swift
+  platform: ios
+  official: true
+  sdk: true
+  version: 5.4.4
+  published: null
+  checksum: fc41d755eb2812887048dc459f42cf8319c1a5e9ca9483deef554e4fc92be7d6
+  note: >-
+    The actual binary the Swift package resolves. Distribution is a CDN/S3 bucket
+    on TechSee's own domain, so there is no registry metadata endpoint and no
+    publish date to read — `published: null` is a checked gap, not an unchecked
+    field. The version IS readable because the URL is pinned in the filename
+    (…_5.4.4.xcframework.zip) and the manifest carries a SHA-256 checksum. Bucket
+    listing at https://sdk-us.techsee.me/ios/build/ returns 403 (AccessDenied);
+    the pinned object itself returns 200.
+- name: TSWebRTC.xcframework
+  registry: cdn
+  url: https://sdk-us.techsee.me/ios/build/TSWebRTC_1.0.0.xcframework.zip
+  language: swift
+  platform: ios
+  official: true
+  sdk: false
+  version: 1.0.0
+  published: null
+  checksum: 4aa64a8738e95e566eed14a03c1c186b997be7f5a289712e05c28c3f05eefbbc
+  note: >-
+    Second binary target of the TechSee Live Swift package — the bundled WebRTC
+    stack, not a separately consumable SDK. Same CDN distribution, same absent
+    registry metadata.
+- name: '@techsee/techsee-media-service'
+  registry: npm
+  url: https://www.npmjs.com/package/@techsee/techsee-media-service
+  language: javascript
+  official: true
+  sdk: false
+  version: 26.195.0
+  published: '2026-08-25'
+  license: ISC
+  repository: https://github.com/TechSeeDev/techsee-common-packages
+  note: >-
+    First-party TechSee package published to public npm from the private
+    techsee-common-packages monorepo. It is internal media-service plumbing, not a
+    documented client SDK for the TechSee API — recorded as official but sdk:false
+    so sdk_count reflects the one library TechSee actually documents for
+    integrators.
+- name: '@techsee/techsee-media-service-client'
+  registry: npm
+  url: https://www.npmjs.com/package/@techsee/techsee-media-service-client
+  language: javascript
+  official: true
+  sdk: false
+  version: 50.258.0
+  published: '2026-08-25'
+  repository: https://github.com/TechSeeDev/techsee-common-packages
+  note: Internal client for the TechSee media service; no public documentation.
+- name: '@techsee/techsee-nway-media-service-client'
+  registry: npm
+  url: https://www.npmjs.com/package/@techsee/techsee-nway-media-service-client
+  language: javascript
+  official: true
+  sdk: false
+  version: 1.258.0
+  published: '2026-08-25'
+  repository: https://github.com/TechSeeDev/techsee-common-packages
+  note: Internal client for the TechSee N-way (multi-party) media service.
+- name: '@techsee/client'
+  registry: npm
+  url: https://www.npmjs.com/package/@techsee/client
+  language: javascript
+  official: true
+  sdk: false
+  version: 1.33.1-alpha-dannyHY-380-726731810061448.0
+  published: '2026-08-13'
+  license: UNLICENSED
+  repository: https://github.com/TechSeeDev/techsee-common-packages
+  note: >-
+    npm description reads "Public package meant to use by techsee associates" and
+    the only dist-tag `latest` is a CI-generated alpha off a feature branch —
+    published publicly but not offered as an integrator SDK.
+- name: '@techsee/migrate-mongo'
+  registry: npm
+  url: https://www.npmjs.com/package/@techsee/migrate-mongo
+  language: javascript
+  official: true
+  sdk: false
+  version: 2.0.0
+  published: '2026-07-05'
+  license: MIT
+  repository: https://github.com/TechSeeDev/techsee-migrate-mongo
+  note: TechSee's fork of the MongoDB migration tool; infrastructure, not an API client.
+
+counts:
+  total: 8
+  official: 8
+  sdks: 1
+  registries:
+    npm: 4
+    swift-package-manager: 1
+    cdn: 2
+
+open_source_forks:
+  note: >-
+    The TechSeeDev GitHub organization additionally carries maintained forks of
+    third-party WebRTC/queueing libraries (techsee-pinchzoom, techsee-detectrtc,
+    jackrabbit, techsee-celery-node, openvidu, ua-parser-js). They are TechSee
+    forks of other projects rather than TechSee client libraries and are not
+    counted as SDKs.
+  url: https://github.com/TechSeeDev

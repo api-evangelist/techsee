@@ -1,0 +1,72 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  https://techsee.com/.well-known/oauth-authorization-server (200, RFC 8414) and
+  https://techsee.com/.well-known/oauth-protected-resource (200, RFC 9728),
+  fetched 2026-08-29
+name: TechSee
+slug: techsee
+summary: >-
+  TechSee publishes no public authentication documentation for its product API — the
+  developer portal is not reachable (see x-coverage). The one authentication model
+  that IS machine-readable and was verified by probe is the OAuth 2.0 authorization
+  server that fronts TechSee's MCP endpoint on techsee.com. Everything below is read
+  from those two live metadata documents, not from prose.
+
+schemes:
+- id: oauth2_mcp
+  type: oauth2
+  flow: authorizationCode
+  pkce: required
+  pkce_methods: [S256]
+  authorization_url: https://techsee.com/oauth/authorize
+  token_url: https://techsee.com/oauth/token
+  revocation_url: https://techsee.com/oauth/revoke
+  refresh: true
+  issuer: https://techsee.com
+  scopes:
+  - mcp
+  client_authentication: none
+  client_authentication_note: >-
+    token_endpoint_auth_methods_supported is ["none"] — public clients only, no
+    client secret. client_id_metadata_document_supported is true, so a client is
+    identified by a URL that resolves to its client-ID metadata document rather
+    than by a pre-registered client_id/secret pair. No dynamic client registration
+    endpoint (RFC 7591) is advertised.
+  token_presentation: Authorization Bearer header (bearer_methods_supported ["header"])
+  protects:
+  - https://techsee.com/wp-json/mcp/mcp-oauth-server
+  applies_to: mcp
+  evidence:
+    url: https://techsee.com/.well-known/oauth-authorization-server
+    status: 200
+    file: ../well-known/techsee-oauth-authorization-server.json
+
+- id: wordpress_rest
+  type: http
+  scheme: cookie-or-application-password
+  documented: false
+  applies_to: https://techsee.com/wp-json/
+  note: >-
+    The non-OAuth MCP adapter server and the wp-abilities routes are gated by
+    ordinary WordPress REST authentication; an unauthenticated GET returns
+    {"code":"rest_forbidden","message":"Sorry, you are not allowed to do that."}
+    with HTTP 401. Recorded as observed behaviour, not as a documented scheme.
+  evidence:
+    url: https://techsee.com/wp-json/wp-abilities/v1/abilities
+    status: 401
+
+product_api:
+  documented: false
+  note: >-
+    TechSee markets an "open integration platform" of APIs and prebuilt CRM/CCaaS
+    connectors, but no public reference states how those APIs authenticate. The
+    former developer portal at https://techsee.readme.io/ answers 401, and the
+    Stoplight workspace at https://techsee.stoplight.io/ publishes zero public
+    projects. No API key, bearer, HMAC or OAuth scheme for the product API could be
+    observed, and none is asserted here.
+  evidence:
+  - url: https://techsee.readme.io/
+    status: 401
+  - url: https://techsee.stoplight.io/
+    status: 200

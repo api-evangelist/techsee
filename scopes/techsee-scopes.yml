@@ -1,0 +1,23 @@
+generated: '2026-08-29'
+method: probed
+source: https://techsee.com/.well-known/oauth-authorization-server (200, RFC 8414)
+name: TechSee
+slug: techsee
+docs: null
+docs_note: >-
+  TechSee publishes no scopes/permissions reference page. The scope list below is
+  read verbatim from the live OAuth 2.0 Authorization Server Metadata document and
+  is corroborated by the RFC 9728 protected-resource metadata, which advertises the
+  same single scope.
+authorization_server: https://techsee.com
+scope_count: 1
+scopes:
+- name: mcp
+  description: >-
+    The only scope the authorization server advertises. It grants access to the
+    protected resource https://techsee.com/wp-json/mcp/mcp-oauth-server — i.e. the
+    whole MCP surface. No finer-grained scopes (read vs write, per-ability, per
+    content type) are published, so an agent holding this scope holds everything the
+    MCP server exposes. No description text is supplied by the provider; this note
+    is API Evangelist's reading of the two metadata documents, not provider prose.
+  source: https://techsee.com/.well-known/oauth-authorization-server

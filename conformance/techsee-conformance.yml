@@ -1,0 +1,87 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Live probes of techsee.com metadata endpoints and MCP routes, 2026-08-29. Each
+  entry below points at the exact document or response that establishes it.
+name: TechSee
+slug: techsee
+summary: >-
+  TechSee's only machine-verifiable standards conformance sits on its MCP/OAuth
+  surface. No product-API contract is published, so nothing about REST conventions,
+  pagination, or error format can be asserted. No named security or privacy
+  certification (SOC 2, ISO 27001, HIPAA, PCI DSS) is published on any TechSee page
+  probed, so no Compliance pointer is emitted.
+
+standards:
+- id: oauth2
+  name: OAuth 2.0 (RFC 6749)
+  conforms: true
+  evidence: >-
+    Authorization server metadata advertises authorization_code and refresh_token
+    grants with /oauth/authorize, /oauth/token and /oauth/revoke endpoints.
+    https://techsee.com/.well-known/oauth-authorization-server (200)
+- id: rfc8414
+  name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-authorization-server returns 200 application/json with
+    issuer, authorization_endpoint, token_endpoint, response_types_supported,
+    grant_types_supported, code_challenge_methods_supported and scopes_supported.
+- id: rfc9728
+  name: OAuth 2.0 Protected Resource Metadata (RFC 9728)
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-protected-resource returns 200 application/json with
+    resource, authorization_servers, bearer_methods_supported and scopes_supported.
+- id: rfc7636
+  name: PKCE (RFC 7636)
+  conforms: true
+  evidence: >-
+    code_challenge_methods_supported is ["S256"] and no plain method is offered.
+- id: rfc6750
+  name: OAuth 2.0 Bearer Token Usage (RFC 6750)
+  conforms: true
+  evidence: bearer_methods_supported is ["header"].
+- id: rfc7591
+  name: OAuth 2.0 Dynamic Client Registration (RFC 7591)
+  conforms: false
+  evidence: >-
+    No registration_endpoint is advertised. The server instead sets
+    client_id_metadata_document_supported true, the client-ID-metadata-document
+    approach, so registration-free public clients are expected.
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: >-
+    GET https://techsee.com/wp-json/mcp/mcp-oauth-server returns 401 with the MCP
+    error envelope {"code":"mcp_unauthorized","message":"MCP authentication
+    required."}, and the endpoint is named as the protected resource by the RFC 9728
+    document. Tool-level conformance could not be checked: tools/list POSTs are
+    intercepted by a Cloudflare WAF with HTTP 403 before reaching the origin.
+- id: openid-connect
+  name: OpenID Connect Discovery
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on techsee.com.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document was found on techsee.com, api.techsee.me,
+    app.techsee.me or the docs hosts. See x-coverage.
+
+domain_standard:
+  applicable: false
+  note: >-
+    Visual assistance / remote-support software has no adopted cross-vendor domain
+    standard for its own market — no equivalent of SCIM, OpenRTB, FHIR, LTI or
+    ISO 20022 exists for AR-guided customer support sessions. This is recorded as
+    not-applicable rather than as a failure, and nothing was invented to fill it.
+
+certifications:
+  published: []
+  note: >-
+    techsee.com/privacy-policy/ (200) names no certification and was last updated in
+    2017; techsee.com/terms-and-conditions/ (200) names none; no trust.techsee.com,
+    security.techsee.com, /trust, /security or /compliance page resolves. Absence of
+    a published certification is not a claim that TechSee holds none — only that
+    none is published where a buyer or a machine can read it.

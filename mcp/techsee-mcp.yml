@@ -1,0 +1,106 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  https://techsee.com/.well-known/oauth-protected-resource (200),
+  https://techsee.com/.well-known/oauth-authorization-server (200),
+  https://techsee.com/wp-json/mcp/ (200 route index),
+  GET https://techsee.com/wp-json/mcp/mcp-oauth-server (401 mcp_unauthorized)
+name: TechSee MCP Server
+slug: techsee
+status: live
+
+deployment:
+  mode: remote
+  endpoint: https://techsee.com/wp-json/mcp/mcp-oauth-server
+  auth: oauth
+  verified: probed
+
+summary: >-
+  TechSee serves a live, OAuth-protected Model Context Protocol server from its own
+  domain. It was found not from any TechSee documentation — TechSee documents no
+  MCP surface anywhere — but from RFC 9728 protected-resource metadata served at
+  https://techsee.com/.well-known/oauth-protected-resource, which names the resource
+  explicitly. A GET against that endpoint answers with a well-formed MCP error,
+  {"code":"mcp_unauthorized","message":"MCP authentication required."} (401), which
+  is what proves a server is actually mounted there rather than a stray route.
+
+what_it_fronts: >-
+  IMPORTANT SCOPE NOTE — this is the WordPress MCP surface of techsee.com, not the
+  TechSee Live / Sophie AI product API. techsee.com is a WordPress site (WP Engine),
+  and the /wp-json/mcp/ namespace plus the sibling /wp-json/wp-abilities/v1/
+  namespace are the WordPress MCP Adapter and Abilities API. The tools it exposes
+  are therefore WordPress site abilities (content, posts, media, site management),
+  not visual-assistance sessions, computer-vision inference, or AR guidance. A buyer
+  reading this artifact should not infer that TechSee's product platform is callable
+  over MCP; it is not, publicly.
+
+servers:
+- name: mcp-oauth-server
+  endpoint: https://techsee.com/wp-json/mcp/mcp-oauth-server
+  methods: [POST, GET, DELETE]
+  auth: oauth
+  probe:
+    method: GET
+    status: 401
+    body: '{"code":"mcp_unauthorized","message":"MCP authentication required.","data":{"status":401}}'
+- name: mcp-adapter-default-server
+  endpoint: https://techsee.com/wp-json/mcp/mcp-adapter-default-server
+  methods: [POST, GET, DELETE]
+  auth: wordpress-cookie-or-application-password
+  probe:
+    method: GET
+    status: 401
+    body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  note: >-
+    The MCP Adapter's default (non-OAuth) server. Not advertised by the
+    protected-resource metadata; reachable but gated by ordinary WordPress REST
+    authentication.
+
+authorization:
+  authorization_server: https://techsee.com
+  metadata: well-known/techsee-oauth-authorization-server.json
+  protected_resource_metadata: well-known/techsee-oauth-protected-resource.json
+  authorization_endpoint: https://techsee.com/oauth/authorize
+  token_endpoint: https://techsee.com/oauth/token
+  revocation_endpoint: https://techsee.com/oauth/revoke
+  grant_types: [authorization_code, refresh_token]
+  pkce: S256
+  scopes: [mcp]
+  client_registration: >-
+    No dynamic client registration endpoint is advertised;
+    client_id_metadata_document_supported is true, so a client identifies itself by
+    a client-ID metadata document URL. token_endpoint_auth_methods_supported is
+    ["none"], i.e. public clients only.
+  bearer_methods: [header]
+
+tools:
+  status: gated
+  count: null
+  note: >-
+    The live tool set could not be enumerated. tools/list was attempted once as a
+    POST with Accept: application/json, text/event-stream against both endpoints;
+    both were answered with an HTTP 403 Cloudflare "Attention Required" interstitial
+    rather than by the origin, so the WAF blocks unauthenticated POSTs to /wp-json/
+    outright. The GET probes did reach the origin and returned the 401s above. The
+    sibling /wp-json/wp-abilities/v1/abilities route, which would list the ability
+    definitions the adapter maps to tools, also returns 401 rest_forbidden. No tool
+    names or inputSchemas are recorded here because none were observed — enumerating
+    them requires an authenticated OAuth token. Nothing is inferred or invented.
+  probes:
+  - url: https://techsee.com/wp-json/mcp/mcp-oauth-server
+    method: POST tools/list
+    status: 403
+    result: Cloudflare WAF interstitial, not an origin response
+  - url: https://techsee.com/wp-json/mcp/mcp-adapter-default-server
+    method: POST tools/list
+    status: 403
+    result: Cloudflare WAF interstitial, not an origin response
+  - url: https://techsee.com/wp-json/wp-abilities/v1/abilities
+    method: GET
+    status: 401
+    result: '{"code":"rest_forbidden"}'
+
+derived_from_openapi: false
+derived_note: >-
+  No candidate tool list was derived, because TechSee publishes no OpenAPI to derive
+  one from. See the repo's x-coverage block.

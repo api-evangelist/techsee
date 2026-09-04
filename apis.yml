@@ -12,6 +12,21 @@ description: 'TechSee is an Israeli-founded customer-experience software company
   Pega, Microsoft Dynamics 365, Amdocs and CSG. Public developer artifacts are limited
   to an iOS mobile SDK on GitHub; the API reference itself is not published publicly.'
 url: https://raw.githubusercontent.com/api-evangelist/techsee/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://techsee.com/wp-content/uploads/2024/08/logos-03.svg
 x-type: company
 x-source: harvest:secondary-market

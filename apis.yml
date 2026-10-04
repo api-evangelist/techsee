@@ -41,7 +41,7 @@ tags:
 - Customer Experience
 - Customer Service
 - Contact Center
-- Computer-Vision
+- Computer Vision
 - Augmented Reality
 - Artificial Intelligence
 - Field Service
@@ -61,6 +61,7 @@ tags_raw:
 - Remote Support
 - Video
 - Telecommunications
+- Computer-Vision
 apis: []
 maintainers:
 - FN: Kin Lane

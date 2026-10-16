@@ -2,8 +2,8 @@
   "repo": "techsee",
   "feeds": [
     {
-      "source": "https://techsee.com/integrations/",
-      "feed_url": "https://techsee.com/feed/",
+      "source": "https://techsee.com/blog/",
+      "feed_url": "https://techsee.com/blog/feed/",
       "title": "",
       "saved": 0,
       "method": "discovered"
@@ -17,5 +17,5 @@
     }
   ],
   "post_count": 12,
-  "fetched": "2026-10-03T12:30:02Z"
+  "fetched": "2026-10-10T13:15:00Z"
 }

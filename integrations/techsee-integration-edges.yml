@@ -1,0 +1,85 @@
+edges:
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@techsee/client
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@techsee/client'
+      version: 1.33.1-alpha-featHOME-3752-image-captured-notification-915390059291454.0
+      released: '2026-09-14'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@techsee/client
+      repo_leg: github-org:techseedev
+      publisher_leg: org:techsee
+      matched_by: github-org
+    - name: '@techsee/migrate-mongo'
+      version: 2.0.0
+      released: '2026-08-23'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@techsee/migrate-mongo
+      repo_leg: github-org:techseedev
+      publisher_leg: org:techsee
+      matched_by: github-org
+    - name: '@techsee/techsee-media-service'
+      version: 26.205.0
+      released: '2026-10-18'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@techsee/techsee-media-service
+      repo_leg: github-org:techseedev
+      publisher_leg: org:techsee
+      matched_by: github-org
+    - name: '@techsee/techsee-media-service-client'
+      version: 50.271.0
+      released: '2026-10-18'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@techsee/techsee-media-service-client
+      repo_leg: github-org:techseedev
+      publisher_leg: org:techsee
+      matched_by: github-org
+    - name: '@techsee/techsee-nway-media-service-client'
+      version: 2.10.0
+      released: '2026-10-18'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@techsee/techsee-nway-media-service-client
+      repo_leg: github-org:techseedev
+      publisher_leg: org:techsee
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+generated: '2026-10-18'
+method: searched
+source:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
+checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1

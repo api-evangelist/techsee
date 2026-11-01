@@ -64,9 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-TechSee builds visual assistance and visual agentic AI for customer service, contact centers and field service. Its platform — TechSee Live for agent-guided visual sessions and Sophie AI for autonomous multimodal virtual agents — combines live video, computer vision, augmented reality overlays and screen sharing so that a human or AI agent can see what a customer sees and guide them to a resolution. TechSee sells into telecommunications, insurance, utilities, consumer electronics, home builders, medical devices, retail and BPO, and markets an "open integration platform" of APIs plus prebuilt connectors for Salesforce, ServiceNow, Zendesk, Amazon Connect, Oracle, Pega, Microsoft Dynamics 365, Amdocs and CSG.
+TechSee is an Israeli-founded customer-experience software company that builds visual assistance and visual agentic AI for customer service, contact centers and field service. Its platform — TechSee Live for agent-guided visual sessions and Sophie AI for autonomous multimodal virtual agents — combines live video, computer vision, augmented reality overlays and screen sharing so that a support agent or an AI agent can see what a customer sees and guide them to a resolution. TechSee sells into telecommunications, insurance, utilities, consumer electronics, home builders, medical devices, retail and BPO, and markets an "open integration platform" of APIs plus prebuilt connectors for Salesforce, ServiceNow, Zendesk, Amazon Connect, Oracle, Pega, Microsoft Dynamics 365, Amdocs and CSG. Public developer artifacts are limited to an iOS mobile SDK on GitHub; the API reference itself is not published publicly.
 
-TechSee publishes no public API reference or machine-readable contract — the former developer portal at https://techsee.readme.io/ returns HTTP 401 and the Stoplight workspace at https://techsee.stoplight.io/ has zero public projects. What this profile did find, by probe: a live OAuth-protected Model Context Protocol endpoint on techsee.com (advertised by RFC 8414 and RFC 9728 metadata), and the TechSee Live iOS SDK on GitHub.
+**Areas:** Company · Visual Assistance · Customer Experience · Customer Service · Contact Center · Computer Vision · Augmented Reality · Artificial Intelligence · Field Service Management · Remote Support · Video · Telecommunications
 
-- https://techsee.com/
-- https://github.com/TechSeeDev
+## TechSee on APIs.io
+
+Everything profiled for TechSee is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/techsee/](https://apis.io/providers/techsee/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [TechSee MCP Server](https://apis.io/servers/techsee/techsee-mcp-server/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Techsee Authentication](https://apis.io/security/techsee/techsee-authentication/)
+- [Techsee Domain Security](https://apis.io/security/techsee/techsee-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Techsee Scopes](https://apis.io/scopes/techsee/techsee-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Techsee Plans Pricing](https://apis.io/plans/techsee/techsee-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Techsee Rate Limits](https://apis.io/rate-limits/techsee/techsee-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://techsee.com/)
+- [Pricing](https://techsee.com/pricing/)
+- [Support](https://techsee.atlassian.net/servicedesk/customer/portal/5)
+- [Blog](https://techsee.com/blog/)
+- [Terms of service](https://techsee.com/terms-and-conditions/)
+- [Privacy policy](https://techsee.com/privacy-policy/)
+- [GitHub](https://github.com/TechSeeDev)
+
+## API Evangelist rating
+
+**Kin Score 22.4** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.7 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 38.2 |
+
+**Agent readiness 19.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 32.8** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/techsee/](https://apis.io/providers/techsee/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TechSee: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/techsee/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
